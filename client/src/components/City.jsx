@@ -33,13 +33,14 @@ function City() {
   // };
 
   const { cityName, emoji, date, notes } = currentCity;
+  // console.log(currentCity);
 
   if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.city}>
       <div className={styles.row}>
-        <h6>City name</h6>
+        <h6>{cityName}</h6>
         <h3>
           <span>{emoji}</span> {cityName}
         </h3>

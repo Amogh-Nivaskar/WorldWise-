@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://localhost:5000";
 
 const CitiesContext = createContext();
 
@@ -34,7 +34,7 @@ function reducer(state, action) {
       return {
         ...state,
         isLoading: false,
-        cities: state.cities.filter((city) => city.id !== action.payload),
+        cities: state.cities.filter((city) => city._id !== action.payload),
         currentCity: {},
       };
 
@@ -100,6 +100,7 @@ function CitiesProvider({ children }) {
         },
       });
       const data = await res.json();
+
       dispatch({ type: "city/created", payload: data });
     } catch (error) {
       dispatch({

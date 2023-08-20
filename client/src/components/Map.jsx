@@ -14,10 +14,18 @@ import { useGeolocation } from "../hooks/useGeolocation";
 import Button from "./Button";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 
+const mumbaiPos = {
+  lat: 19.1168512,
+  lng: 72.8891392,
+};
+
 function Map() {
   const { cities } = useCities();
 
-  const [mapPosition, setMapPosition] = useState([40, 0]);
+  const [mapPosition, setMapPosition] = useState([
+    mumbaiPos.lat,
+    mumbaiPos.lng,
+  ]);
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
@@ -60,7 +68,7 @@ function Map() {
         {cities.map((city) => (
           <Marker
             position={[city.position.lat, city.position.lng]}
-            key={city.id}
+            key={city._id}
           >
             <Popup>
               <span>{city.emoji}</span> <span>{city.cityName}</span>
